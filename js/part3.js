@@ -3,9 +3,22 @@ function ConversionPart3() {
   var floatToConvert = parseFloat(document.getElementById("3_Float").value);
 
   var n = (floatToConvert + "").split(".");
-  console.log(n);
 
   integer = n[0];
+
+  var sign = "";
+  //console.log (n[0].toString().charAt(0))
+  if (n[0].toString().charAt(0) == '-')
+  {
+    sign += 1;
+    integer = Math.abs(integer);
+  }
+  else{
+    sign += 0;
+  }
+  //console.log(n);
+
+
 
     temp = integer;
     var value = [];
@@ -13,35 +26,120 @@ function ConversionPart3() {
     while (temp != 0)
     {
       value[i] = parseInt(temp) % parseInt(2);
-      //console.log (value);
+      ////console.log (value);
       temp = parseInt(temp)/parseInt(2);
       i++;
     }
-    //console.log (value);
+    ////console.log (value);
     var final = "";
     for (i = value.length-2; i >= 0; i--)
     {
-      //console.log(final);
+      ////console.log(final);
       var v = value[i].toString();
-      //console.log(v);
+      ////console.log(v);
       final += v;
-      //console.log (final);
+      ////console.log (final);
     }
     fInt = final;
-    console.log (fInt);
-    console.log (fInt.toString().length);
+    //console.log (fInt);
+    //console.log (fInt.toString().length);
     dec = "";
-    var dec = n[1].toString();
-    console.log(dec);
-    i = 0;
-    /**
-    while (dec != 0 || fInt.toString().length + i <= 23)
+    bDec = "";
+    if (n[1] == null)
     {
-      dec = dec * 2;
-
+      bDec = "";
     }
-    */
-  var output32BitScientificNotation = "10100011001100001000010100101010";
+    else {
+      var dec = n[1].toString();
+      dec = "." + dec;
+      parseFloat(dec);
+      //console.log(dec);
+      i = 0;
+
+      while (dec != 0 || fInt.toString().length + i <= 23)
+      {
+        dec = dec * 2;
+        if(dec >= 1)
+        {
+          bDec += '1';
+        }
+        else {
+          bDec += '0';
+        }
+        var d = (dec + "").split(".");
+        if (d[1] == null)
+        {
+          break;
+        }
+        //console.log(d);
+        dec = "";
+        dec = d[1].toString();
+        dec = "." + dec;
+        parseFloat(dec);
+        i++;
+        //console.log(i);
+        //console.log(fInt.toString().length + i)
+        if (fInt.toString().length + i >= 23)
+        {
+          break;
+        }
+      }
+      //console.log(bDec);
+    }
+  var mantissa = fInt.toString() + bDec;
+  console.log (mantissa);
+
+
+  //console.log (mantissa.length);
+  //console.log ("test");
+  //console.log (mantissa.length-1);
+  expNum = mantissa.length - 1 + 128;
+
+  mantissa = mantissa.replace(1, '');
+  //console.log(expNum);
+
+
+  temp = expNum;
+  var value = [];
+  i = 0;
+  while (temp != 0)
+  {
+    value[i] = parseInt(temp) % parseInt(2);
+    ////console.log (value);
+    temp = parseInt(temp)/parseInt(2);
+    i++;
+  }
+  ////console.log (value);
+  var final = "";
+  for (i = value.length-2; i >= 0; i--)
+  {
+    ////console.log(final);
+    var v = value[i].toString();
+    ////console.log(v);
+    final += v;
+    ////console.log (final);
+    expNum = final;
+  }
+  //console.log (expNum);
+
+
+
+  //console.log(sign);
+  //console.log(mantissa.length);
+  if (mantissa.length < 23)
+  {
+    while (mantissa.length < 23)
+    {
+      mantissa += "0";
+    }
+  }
+  //console.log(mantissa.length);
+  var final = "";
+  //console.log (expNum.length);
+  final = mantissa + expNum + sign;
+  var output32BitScientificNotation = final;
+  //console.log(final.length);
+  //var output32BitScientificNotation = "10100011001100001000010100101010";
 /*
   Value := fraction to be converted;
 REPEAT

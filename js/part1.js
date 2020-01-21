@@ -12,10 +12,10 @@ function ConversionPart1() {
     }
 
     var num = UnsignedInt.split('');
-    console.log(num);
-    console.log(num[1]);
+    //console.log(num);
+    //console.log(num[1]);
 
-    //console.log(s.charAt());
+    ////console.log(s.charAt());
 
     if (UnsignedIntBaseFrom != 10)
     {
@@ -74,20 +74,20 @@ function ConversionPart1() {
           value = parseInt((value * UnsignedIntBaseFrom)) + parseInt(num[i]);
           //i++;
         }
-        //console.log(num);
-        console.log(value);
+        ////console.log(num);
+        //console.log(value);
         i++;
         digits = digits - 1;
       }
       if (UnsignedIntBaseTo != 10)
       {
-        console.log(true);
+        //console.log(true);
         temp = value;
         var fValue = [];
         i = 0;
         while (temp != 0)
         {
-          console.log("test");
+          //console.log("test");
           fValue[i] = parseInt(temp) % parseInt(UnsignedIntBaseTo);
           if (fValue[i] == 10)
           {
@@ -113,26 +113,26 @@ function ConversionPart1() {
           {
             fValue[i] = 'F';
           }
-          //console.log (fValue);
+          ////console.log (fValue);
           temp = parseInt(temp)/parseInt(UnsignedIntBaseTo);
           i++;
         }
-        //console.log (fValue);
+        ////console.log (fValue);
         var final = "";
         for (i = fValue.length-2; i >= 0; i--)
         {
-          console.log(final);
+          //console.log(final);
           var v = fValue[i].toString();
-          console.log(v);
+          //console.log(v);
           final += v;
-          //console.log (final);
+          ////console.log (final);
         }
         value = final;
       }
 
     }
 
-    //console.log(UnsignedInt);
+    ////console.log(UnsignedInt);
 
     if (UnsignedIntBaseFrom == 10)
     {
@@ -166,19 +166,19 @@ function ConversionPart1() {
         {
           value[i] = 'F';
         }
-        //console.log (value);
+        ////console.log (value);
         temp = parseInt(temp)/parseInt(UnsignedIntBaseTo);
         i++;
       }
-      //console.log (value);
+      ////console.log (value);
       var final = "";
       for (i = value.length-2; i >= 0; i--)
       {
-        console.log(final);
+        //console.log(final);
         var v = value[i].toString();
-        console.log(v);
+        //console.log(v);
         final += v;
-        //console.log (final);
+        ////console.log (final);
       }
       value = final;
     }
@@ -186,7 +186,7 @@ function ConversionPart1() {
 
 
     var outputValue = value;
-  //  console.log (String(outputValue));
+  //  //console.log (String(outputValue));
 
 
   // Show the output on the screen
