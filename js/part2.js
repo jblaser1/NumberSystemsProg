@@ -130,12 +130,16 @@ function ConversionPart2() {
         if (addC[i] == '0')
         {
           console.log(true);
+          for (n = i; n <= (addC.length-1); n++)
+          {
+            addC [n] = "0";
+          }
           addC [i] = "1";
           if (i+1 == addC.length)
           {
             break;
           }
-          addC [i+1] = "0";
+
           console.log(addC[i]);
           console.log(addC[i-1]);
           break;
